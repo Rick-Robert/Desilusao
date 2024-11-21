@@ -1,33 +1,36 @@
 using Godot;
 using System;
 
-public partial class Player : Node2D
+public partial class Player : CharacterBody2D
 {
-	public int Speed = 500;
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	[Export]
+	public int MaxSpeed = 400;
+	[Export]
+	public int Acc = 2200;
+	[Export]
+	public float FrictionRate = 1200;
+	
+	private float Friction = 1200;
+	
+	public override void _PhysicsProcess(double delta)
 	{
-		Position = new Vector2(300,250);
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-		if(Input.IsActionPressed("Left"))
+		var direction = Input.GetVector("Left","Right","Up", "Down");
+		if(direction.Length() > 0)
 		{
-			Position += Vector2.Left*Speed*(float)delta; // i = i + 2; ==> i += 2;
+			Friction = 1000;
+			Velocity += direction*Acc*(float)delta;
+			Velocity = Velocity.LimitLength(MaxSpeed);
+		}else{
+			if(Velocity.Length() > ((Velocity/Velocity.Length())*Friction*(float)delta).Length())
+			{
+				Velocity -= (Velocity/Velocity.Length())*Friction*(float)delta;
+				Friction += FrictionRate*(float)delta;
+			}
+			else
+			{
+				Velocity = Vector2.Zero;
+			}
 		}
-		if(Input.IsActionPressed("Right"))
-		{
-			Position += Vector2.Right*Speed*(float)delta; // i = i + 2; ==> i += 2;
-		}
-		if(Input.IsActionPressed("Down"))
-		{
-			Position += Vector2.Down*Speed*(float)delta; // i = i + 2; ==> i += 2;
-		}
-		if(Input.IsActionPressed("Up"))
-		{
-			Position += Vector2.Up*Speed*(float)delta; // i = i + 2; ==> i += 2;
-		}
+		MoveAndSlide();
 	}
 }

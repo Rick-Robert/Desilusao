@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgw446lkkku3m"]
+
+[ext_resource type="Texture2D" uid="uid://wvldlvnhl1nb" path="res://14.png" id="1_p8s2b"]
+[ext_resource type="Script" path="res://DragNPush.cs" id="2_8umty"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xrpua"]
+radius = 64.0703
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iu28d"]
+radius = 96.6282
+
+[node name="Object" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("2_8umty")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_p8s2b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 0
+shape = SubResource("CircleShape2D_xrpua")
+
+[node name="Area2D" type="Area2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+light_mask = 2
+visibility_layer = 2
+shape = SubResource("CircleShape2D_iu28d")
+
+[connection signal="body_entered" from="Area2D" to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="Area2D" to="." method="OnBodyExited"]

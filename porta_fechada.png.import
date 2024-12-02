@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcaedyoe1dd64"
-path="res://.godot/imported/alavanca sprite.webp-25918cddd067600af94304a50258fe9e.ctex"
+uid="uid://dwlig8oelr2yw"
+path="res://.godot/imported/porta_fechada.png-6acec69ce60ec021c7febc86956049cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://alavanca sprite.webp"
-dest_files=["res://.godot/imported/alavanca sprite.webp-25918cddd067600af94304a50258fe9e.ctex"]
+source_file="res://porta_fechada.png"
+dest_files=["res://.godot/imported/porta_fechada.png-6acec69ce60ec021c7febc86956049cc.ctex"]
 
 [params]
 

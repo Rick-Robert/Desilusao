@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvba7as2j51y0"]
+
+[ext_resource type="PackedScene" uid="uid://dum4n1k0seyer" path="res://Player.tscn" id="1_6t5up"]
+[ext_resource type="PackedScene" uid="uid://dgw446lkkku3m" path="res://Object.tscn" id="2_wahgm"]
+
+[node name="TestChamber" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_6t5up")]
+position = Vector2(258, 321)
+collision_layer = 7
+Acc = 8000
+FrictionRate = 80000.0
+
+[node name="Object" parent="." instance=ExtResource("2_wahgm")]
+position = Vector2(563, 227)
+collision_layer = 4
+collision_mask = 4

@@ -10,8 +10,14 @@ public partial class Door : Area2D
 	{
 		isOpen = !isOpen;
 
-		//Sprite2D doorSprite = GetNode<Sprite2D>("Sprite");
-		//doorSprite.Texture = isOpen ? (Texture2D)GD.Load("res://porta_aberta.png") : (Texture2D)GD.Load("res://porta_fechada.png");
+		Sprite2D doorSprite = GetNode<Sprite2D>("Sprite2D");
+		if(isOpen)
+		{
+			doorSprite.FlipH = true;
+		}else
+		{
+			doorSprite.FlipH = false;
+		}
 	}
 
 }

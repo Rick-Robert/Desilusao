@@ -1,12 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://uwvmjceqm8sy"]
+[gd_scene load_steps=5 format=3 uid="uid://uwvmjceqm8sy"]
 
 [ext_resource type="PackedScene" uid="uid://dum4n1k0seyer" path="res://Player.tscn" id="2_lab41"]
+[ext_resource type="PackedScene" uid="uid://b70jl2hsbysce" path="res://Door.tscn" id="3_8ro7n"]
 [ext_resource type="PackedScene" uid="uid://c6qcwlraab0n0" path="res://Lever.tscn" id="3_lmd64"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6duxu"]
+radius = 14.0
+height = 226.0
 
 [node name="TestLever" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("2_lab41")]
 position = Vector2(140, 180)
+collision_layer = 3
 
-[node name="Lever" parent="." instance=ExtResource("3_lmd64")]
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+
+[node name="Lever" parent="RigidBody2D" instance=ExtResource("3_lmd64")]
 position = Vector2(492, 494)
+collision_mask = 2
+DoorPath = NodePath("../../Door")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(489, 587)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_6duxu")
+
+[node name="Door" parent="." instance=ExtResource("3_8ro7n")]
+position = Vector2(875, 329)

@@ -11,7 +11,9 @@ public partial class Player : CharacterBody2D
 	public float FrictionRate = 1200;
 	
 	private float Friction = 1200;
-	
+	public override void _Ready(){
+		//GetNode<Sprite2D>("/root/");
+	}
 	public override void _PhysicsProcess(double delta)
 	{
 		var direction = Input.GetVector("Left","Right","Up", "Down");

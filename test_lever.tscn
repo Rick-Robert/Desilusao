@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://uwvmjceqm8sy"]
+
+[ext_resource type="PackedScene" uid="uid://dum4n1k0seyer" path="res://Player.tscn" id="2_lab41"]
+[ext_resource type="PackedScene" uid="uid://c6qcwlraab0n0" path="res://Lever.tscn" id="3_lmd64"]
+
+[node name="TestLever" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_lab41")]
+position = Vector2(140, 180)
+
+[node name="Lever" parent="." instance=ExtResource("3_lmd64")]
+position = Vector2(492, 494)

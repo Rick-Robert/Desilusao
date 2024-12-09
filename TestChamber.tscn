@@ -1,17 +1,42 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvba7as2j51y0"]
+[gd_scene load_steps=5 format=3 uid="uid://dvba7as2j51y0"]
 
 [ext_resource type="PackedScene" uid="uid://dum4n1k0seyer" path="res://Player.tscn" id="1_6t5up"]
+[ext_resource type="Script" path="res://TestChamber.cs" id="1_rckdy"]
 [ext_resource type="PackedScene" uid="uid://dgw446lkkku3m" path="res://Object.tscn" id="2_wahgm"]
+[ext_resource type="PackedScene" uid="uid://cbgsik4rlklob" path="res://kanizsa_tri.tscn" id="3_wsnbr"]
 
 [node name="TestChamber" type="Node2D"]
+script = ExtResource("1_rckdy")
 
 [node name="Player" parent="." instance=ExtResource("1_6t5up")]
-position = Vector2(258, 321)
-collision_layer = 7
+position = Vector2(537, 301)
+scale = Vector2(0.6, 0.6)
+collision_mask = 17
 Acc = 8000
 FrictionRate = 80000.0
 
 [node name="Object" parent="." instance=ExtResource("2_wahgm")]
-position = Vector2(563, 227)
-collision_layer = 4
-collision_mask = 4
+position = Vector2(440, 160)
+collision_layer = 12
+collision_mask = 5
+
+[node name="Object2" parent="." instance=ExtResource("2_wahgm")]
+position = Vector2(160, 501)
+collision_layer = 12
+collision_mask = 5
+
+[node name="Object3" parent="." instance=ExtResource("2_wahgm")]
+position = Vector2(645, 465)
+collision_layer = 12
+collision_mask = 5
+
+[node name="Kanizsa_Tri" parent="." instance=ExtResource("3_wsnbr")]
+position = Vector2(410, 322)
+
+[connection signal="CanPose" from="Object" to="Kanizsa_Tri" method="OnDragCanPose"]
+[connection signal="CanPose" from="Object2" to="Kanizsa_Tri" method="OnDragCanPose"]
+[connection signal="CanPose" from="Object3" to="Kanizsa_Tri" method="OnDragCanPose"]
+[connection signal="Completed" from="Kanizsa_Tri" to="." method="OnKanizsaCompleted"]
+[connection signal="Completed" from="Kanizsa_Tri" to="Object" method="OnKanizsaTriCompleted"]
+[connection signal="Completed" from="Kanizsa_Tri" to="Object2" method="OnKanizsaTriCompleted"]
+[connection signal="Completed" from="Kanizsa_Tri" to="Object3" method="OnKanizsaTriCompleted"]

@@ -9,7 +9,7 @@
 script = ExtResource("1_rckdy")
 
 [node name="Player" parent="." instance=ExtResource("1_6t5up")]
-position = Vector2(537, 301)
+position = Vector2(665, 272)
 scale = Vector2(0.6, 0.6)
 collision_mask = 17
 Acc = 8000

@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvba7as2j51y0"]
+[gd_scene load_steps=5 format=3 uid="uid://do58ls2g1828j"]
 
 [ext_resource type="PackedScene" uid="uid://dum4n1k0seyer" path="res://Player.tscn" id="1_6t5up"]
 [ext_resource type="Script" path="res://TestChamber.cs" id="1_rckdy"]
 [ext_resource type="PackedScene" uid="uid://dgw446lkkku3m" path="res://Object.tscn" id="2_wahgm"]
-[ext_resource type="PackedScene" uid="uid://cbgsik4rlklob" path="res://kanizsa_tri.tscn" id="3_wsnbr"]
+[ext_resource type="PackedScene" uid="uid://b071211q0i05a" path="res://kanizsa_tri.tscn" id="3_wsnbr"]
 
 [node name="TestChamber" type="Node2D"]
 script = ExtResource("1_rckdy")

@@ -4,7 +4,7 @@ using System;
 public partial class KanizsaTri : Node2D
 {
 	[Signal]
-	public delegate void CompletedEventHandler();
+	public delegate void CompletedEventHandler(); //Ativa quando puzzle completo
 	private RigidBody2D LastBody;
 	private string LastPoint;
 	private int RightPlace = 0;
@@ -23,44 +23,53 @@ public partial class KanizsaTri : Node2D
 	}
 
 	public void OnBodyTipDownEntered(RigidBody2D Body){
-		RightPlace++;
+		if(Body.Name == "TipDown")
+		{
+			RightPlace++;
 
-		GD.Print(Body.Position);
-		GD.Print(Body.GetCollisionMask()-1);
-		GD.Print("TipDown IN: " + RightPlace);
+			GD.Print(Body.Position);
+			GD.Print(Body.GetCollisionMask()-1);
+			GD.Print("TipDown IN: " + RightPlace);
 
-		Body.SetCollisionMask(Body.GetCollisionMask()-5); //Objeto deixa de ser visível
-		Body.SetCollisionLayer(Body.GetCollisionLayer()+4); //Objeto existe na camada 5
-		Body.GetNode<Area2D>("Area2D").SetCollisionMask(Body.GetNode<Area2D>("Area2D").GetCollisionMask()-1); //Area 2D de Objeto para de ver o player
-		
-		LastBody = Body; //Guarda qual objeto entrou na área por último
-		LastPoint = "TipDown"; //qual área entrou por último
+			Body.SetCollisionMask(Body.GetCollisionMask()-5); //Objeto deixa de ser visível
+			Body.SetCollisionLayer(Body.GetCollisionLayer()+4); //Objeto existe na camada 5
+			Body.GetNode<Area2D>("Area2D").SetCollisionMask(Body.GetNode<Area2D>("Area2D").GetCollisionMask()-1); //Area 2D de Objeto para de ver o player
+
+			LastBody = Body; //Guarda qual objeto entrou na área por último
+			LastPoint = "TipDown"; //qual área entrou por último
+		}
 	}
 	public void OnBodyLeftEntered(RigidBody2D Body){
-		RightPlace++;
+		if(Body.Name == "TopLeft")
+		{
+			RightPlace++;
 
-		GD.Print(Body.GetCollisionMask());
-		GD.Print(Body.Position);
-		GD.Print("Left IN HERE: " + RightPlace);
+			GD.Print(Body.GetCollisionMask());
+			GD.Print(Body.Position);
+			GD.Print("Left IN HERE: " + RightPlace);
 
-		Body.SetCollisionMask(Body.GetCollisionMask()-5);
-		Body.SetCollisionLayer(Body.GetCollisionLayer()+4);
-		Body.GetNode<Area2D>("Area2D").SetCollisionMask(Body.GetNode<Area2D>("Area2D").GetCollisionMask()-1);
+			Body.SetCollisionMask(Body.GetCollisionMask()-5);
+			Body.SetCollisionLayer(Body.GetCollisionLayer()+4);
+			Body.GetNode<Area2D>("Area2D").SetCollisionMask(Body.GetNode<Area2D>("Area2D").GetCollisionMask()-1);
 
-		LastBody = Body;
-		LastPoint = "Left";
+			LastBody = Body;
+			LastPoint = "Left";
+		}
 	}
 		public void OnBodyRightEntered(RigidBody2D Body){
-		RightPlace++;
-		
-		Body.SetCollisionMask(Body.GetCollisionMask()-5);
-		Body.SetCollisionLayer(Body.GetCollisionLayer()+4);
-		Body.GetNode<Area2D>("Area2D").SetCollisionMask(Body.GetNode<Area2D>("Area2D").GetCollisionMask()-1);
-		
-		LastBody = Body;
-		LastPoint = "Right";
+		if(Body.Name == "TopRight")
+		{
+			RightPlace++;
+			
+			Body.SetCollisionMask(Body.GetCollisionMask()-5);
+			Body.SetCollisionLayer(Body.GetCollisionLayer()+4);
+			Body.GetNode<Area2D>("Area2D").SetCollisionMask(Body.GetNode<Area2D>("Area2D").GetCollisionMask()-1);
+			
+			LastBody = Body;
+			LastPoint = "Right";
 
-		GD.Print("Right IN: " + RightPlace);
+			GD.Print("Right IN: " + RightPlace);
+		}
 		
 	}
 

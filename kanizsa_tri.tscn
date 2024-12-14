@@ -11,11 +11,12 @@ visibility_layer = 8
 script = ExtResource("1_di57a")
 
 [node name="TipDown" type="Area2D" parent="."]
-position = Vector2(0, 110.84)
+position = Vector2(0, 55.42)
 collision_layer = 0
 collision_mask = 8
 
 [node name="Sprite2D" type="Sprite2D" parent="TipDown"]
+modulate = Color(1, 1, 1, 0.0980392)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_24ri0")
 
@@ -23,7 +24,8 @@ texture = ExtResource("2_24ri0")
 shape = SubResource("RectangleShape2D_xrjbu")
 
 [node name="Left" type="Area2D" parent="."]
-position = Vector2(-96, -55.43)
+modulate = Color(1, 1, 1, 0.0980392)
+position = Vector2(-48, -27.72)
 collision_layer = 0
 collision_mask = 8
 
@@ -35,7 +37,8 @@ texture = ExtResource("2_24ri0")
 shape = SubResource("RectangleShape2D_xrjbu")
 
 [node name="Right" type="Area2D" parent="."]
-position = Vector2(96, -55.43)
+modulate = Color(1, 1, 1, 0.0980392)
+position = Vector2(48, -27.52)
 collision_layer = 0
 collision_mask = 8
 

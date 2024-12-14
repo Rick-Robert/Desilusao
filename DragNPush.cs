@@ -3,6 +3,8 @@ using System;
 
 public partial class DragNPush : RigidBody2D
 {
+	[Export]
+	public String SetAnimation = "IdleTip";
 	[Signal]
 	public delegate void CanPoseEventHandler();
 	public Vector2 Dist = Vector2.Zero;
@@ -11,6 +13,7 @@ public partial class DragNPush : RigidBody2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		GetNode<AnimatedSprite2D>("AnimatedSprite2D").Animation = SetAnimation;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,8 +48,15 @@ public partial class DragNPush : RigidBody2D
 		Draggable = false;
 		//GD.Print("Exited");
 	}
-	public void OnKanizsaTriCompleted(){
-		QueueFree();
+	public void OnAnimationFinished(){
+		if(Name != "Triangulo")
+			QueueFree();
 	}
+	public void OnKanizsaTriCompleted(){
+		String temp = SetAnimation.Remove(0,4);
+		GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play(temp + "FadeOut");
+		GD.Print(temp + "FadeOut");
+	}
+	
 }
 

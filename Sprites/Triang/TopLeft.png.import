@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cn6lkjueqmmka"
-path="res://.godot/imported/Triangulo.png-f6818a20ac48c874d0fa3d1d454d0908.ctex"
+uid="uid://cwjk4y4qkb07n"
+path="res://.godot/imported/TopLeft.png-3341ab795231e1f54b24ffec529f81c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Triangulo.png"
-dest_files=["res://.godot/imported/Triangulo.png-f6818a20ac48c874d0fa3d1d454d0908.ctex"]
+source_file="res://Sprites/Triang/TopLeft.png"
+dest_files=["res://.godot/imported/TopLeft.png-3341ab795231e1f54b24ffec529f81c6.ctex"]
 
 [params]
 

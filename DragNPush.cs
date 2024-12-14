@@ -5,6 +5,8 @@ public partial class DragNPush : RigidBody2D
 {
 	[Export]
 	public String SetAnimation = "IdleTip";
+	[Export]
+	public String SetAnimation = "IdleTip";
 	[Signal]
 	public delegate void CanPoseEventHandler();
 	public Vector2 Dist = Vector2.Zero;

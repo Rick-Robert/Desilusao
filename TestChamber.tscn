@@ -9,34 +9,36 @@
 script = ExtResource("1_rckdy")
 
 [node name="Player" parent="." instance=ExtResource("1_6t5up")]
-position = Vector2(665, 272)
+position = Vector2(135, 587)
 scale = Vector2(0.6, 0.6)
 collision_mask = 17
 Acc = 8000
 FrictionRate = 80000.0
 
-[node name="Object" parent="." instance=ExtResource("2_wahgm")]
-position = Vector2(440, 160)
+[node name="TipDown" parent="." instance=ExtResource("2_wahgm")]
+position = Vector2(860, 550)
 collision_layer = 12
 collision_mask = 5
 
-[node name="Object2" parent="." instance=ExtResource("2_wahgm")]
-position = Vector2(160, 501)
+[node name="TopRight" parent="." instance=ExtResource("2_wahgm")]
+position = Vector2(717, 84)
 collision_layer = 12
 collision_mask = 5
+SetAnimation = "IdleLeft"
 
-[node name="Object3" parent="." instance=ExtResource("2_wahgm")]
-position = Vector2(645, 465)
+[node name="TopLeft" parent="." instance=ExtResource("2_wahgm")]
+position = Vector2(126, 133)
 collision_layer = 12
 collision_mask = 5
+SetAnimation = "IdleRight"
 
 [node name="Kanizsa_Tri" parent="." instance=ExtResource("3_wsnbr")]
 position = Vector2(410, 322)
 
-[connection signal="CanPose" from="Object" to="Kanizsa_Tri" method="OnDragCanPose"]
-[connection signal="CanPose" from="Object2" to="Kanizsa_Tri" method="OnDragCanPose"]
-[connection signal="CanPose" from="Object3" to="Kanizsa_Tri" method="OnDragCanPose"]
+[connection signal="CanPose" from="TipDown" to="Kanizsa_Tri" method="OnDragCanPose"]
+[connection signal="CanPose" from="TopRight" to="Kanizsa_Tri" method="OnDragCanPose"]
+[connection signal="CanPose" from="TopLeft" to="Kanizsa_Tri" method="OnDragCanPose"]
 [connection signal="Completed" from="Kanizsa_Tri" to="." method="OnKanizsaCompleted"]
-[connection signal="Completed" from="Kanizsa_Tri" to="Object" method="OnKanizsaTriCompleted"]
-[connection signal="Completed" from="Kanizsa_Tri" to="Object2" method="OnKanizsaTriCompleted"]
-[connection signal="Completed" from="Kanizsa_Tri" to="Object3" method="OnKanizsaTriCompleted"]
+[connection signal="Completed" from="Kanizsa_Tri" to="TipDown" method="OnKanizsaTriCompleted"]
+[connection signal="Completed" from="Kanizsa_Tri" to="TopRight" method="OnKanizsaTriCompleted"]
+[connection signal="Completed" from="Kanizsa_Tri" to="TopLeft" method="OnKanizsaTriCompleted"]

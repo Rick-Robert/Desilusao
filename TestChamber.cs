@@ -12,6 +12,14 @@ public partial class TestChamber : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if(Input.IsActionJustPressed("Resize")){
+			GD.Print(DisplayServer.WindowGetMode());
+			if(DisplayServer.WindowGetMode().Equals(DisplayServer.WindowMode.Fullscreen))
+				DisplayServer.WindowSetMode(DisplayServer.WindowMode.Maximized);
+			else
+				DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+		}
+
 	}
 	public void OnKanizsaCompleted(){
 		if(Triangle.GetParent() == null){

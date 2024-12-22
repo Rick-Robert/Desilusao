@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://22laqckuwsww"
-path="res://.godot/imported/TilemapCrackedFloor2 - Copia.png-7b7b40c39b1034ed587ce39ca5d4123b.ctex"
+uid="uid://vqbhxnffs1gv"
+path="res://.godot/imported/TileSetAtlas.png-eaf88013a98c074009f76f47732bb1f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/TileMap/TilemapCrackedFloor2 - Copia.png"
-dest_files=["res://.godot/imported/TilemapCrackedFloor2 - Copia.png-7b7b40c39b1034ed587ce39ca5d4123b.ctex"]
+source_file="res://Sprites/TileMap/TileSetAtlas.png"
+dest_files=["res://.godot/imported/TileSetAtlas.png-eaf88013a98c074009f76f47732bb1f0.ctex"]
 
 [params]
 

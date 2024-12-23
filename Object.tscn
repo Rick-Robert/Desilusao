@@ -21,7 +21,7 @@ script = ExtResource("2_8umty")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.33, 0.33)
 sprite_frames = ExtResource("2_4mrll")
-animation = &"TrianguloFadeIn"
+animation = &"IdleLeft"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 0

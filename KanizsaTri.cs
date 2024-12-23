@@ -37,6 +37,7 @@ public partial class KanizsaTri : Node2D
 
 			LastBody = Body; //Guarda qual objeto entrou na área por último
 			LastPoint = "TipDown"; //qual área entrou por último
+			GD.Print(LastBody);
 		}
 	}
 	public void OnBodyLeftEntered(RigidBody2D Body){
@@ -60,7 +61,6 @@ public partial class KanizsaTri : Node2D
 		if(Body.Name == "TopRight")
 		{
 			RightPlace++;
-			
 			Body.SetCollisionMask(Body.GetCollisionMask()-5);
 			Body.SetCollisionLayer(Body.GetCollisionLayer()+4);
 			Body.GetNode<Area2D>("Area2D").SetCollisionMask(Body.GetNode<Area2D>("Area2D").GetCollisionMask()-1);
@@ -75,7 +75,8 @@ public partial class KanizsaTri : Node2D
 
 	public void OnDragCanPose(){
 		LastBody.Position = LastBody.GetParent().GetNode<Node2D>("Kanizsa_Tri").Position + GetNode<Area2D>(LastPoint).Position;
-		GD.Print(LastBody.Position);
+		GD.Print(LastBody.Name);
+		//GD.Print(LastBody.Name);
 		var Temp = GetNode<Area2D>(LastPoint);
 		if(Temp.GetCollisionMask() != 0)
 		{

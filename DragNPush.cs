@@ -6,14 +6,21 @@ public partial class DragNPush : RigidBody2D
 	public Vector2 Dist = Vector2.Zero;
 	private Node2D Player;
 	private bool Draggable = false;
+	private Vector2 InitialPosition;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		InitialPosition = Position;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
+		Rect2 ViewportRect = GetViewport().GetVisibleRect();
+		if(!ViewportRect.HasPoint(GlobalPosition)){
+			Draggable = false;
+			Position = InitialPosition;
+		}
 		if(Input.IsActionJustPressed("Drag") && Draggable){
 			Dist = Position - Player.Position;
 		}

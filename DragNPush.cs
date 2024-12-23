@@ -10,7 +10,7 @@ public partial class DragNPush : RigidBody2D
 	public Vector2 Dist = Vector2.Zero;
 	private Node2D Player;
 	private bool Draggable = false;
-	private Vector2 InitialPosition;
+	public Vector2 InitialPosition;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{

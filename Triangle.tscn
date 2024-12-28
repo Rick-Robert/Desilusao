@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvf74nutivei5"]
+
+[ext_resource type="Script" path="res://DragNPush.cs" id="1_qb4vs"]
+[ext_resource type="SpriteFrames" uid="uid://bowf2tr7681tp" path="res://Sprites/Triang/AllAnimations.tres" id="2_gnmry"]
+
+[node name="Triangle" type="RigidBody2D"]
+rotation = 3.14159
+collision_layer = 0
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_qb4vs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.53, 0.53)
+sprite_frames = ExtResource("2_gnmry")
+animation = &"TrianguloFadeIn"
+frame = 10
+frame_progress = 1.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.53, 0.53)
+polygon = PackedVector2Array(-97, 83, 98, 83, 0, -87)
+
+[node name="Area2D" type="Area2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+scale = Vector2(0.55, 0.55)
+collision_layer = 2
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(-5.99224e-06, -5.63636)
+scale = Vector2(1.17, 1.17)
+polygon = PackedVector2Array(-97, 83, 98, 83, 0, -87)
+
+[connection signal="body_entered" from="Area2D" to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="Area2D" to="." method="OnBodyExited"]

@@ -1,36 +1,52 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgw446lkkku3m"]
+[gd_scene load_steps=6 format=3 uid="uid://dgw446lkkku3m"]
 
-[ext_resource type="Texture2D" uid="uid://wvldlvnhl1nb" path="res://14.png" id="1_p8s2b"]
+[ext_resource type="SpriteFrames" uid="uid://bowf2tr7681tp" path="res://Sprites/Triang/AllAnimations.tres" id="2_4mrll"]
 [ext_resource type="Script" path="res://DragNPush.cs" id="2_8umty"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xrpua"]
-radius = 64.0703
+radius = 66.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iu28d"]
 radius = 96.6282
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4i67c"]
+
 [node name="Object" type="RigidBody2D"]
+rotation = 3.14159
+collision_layer = 0
 gravity_scale = 0.0
+lock_rotation = true
 script = ExtResource("2_8umty")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_p8s2b")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.33, 0.33)
+sprite_frames = ExtResource("2_4mrll")
+animation = &"IdleLeft"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 0
+scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_xrpua")
 
 [node name="Area2D" type="Area2D" parent="."]
 light_mask = 2
 visibility_layer = 2
-collision_layer = 0
-collision_mask = 2
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 light_mask = 2
 visibility_layer = 2
 shape = SubResource("CircleShape2D_iu28d")
 
+[node name="KArea" type="Area2D" parent="."]
+scale = Vector2(2, 2)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KArea"]
+shape = SubResource("RectangleShape2D_4i67c")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="OnAnimationFinished"]
 [connection signal="body_entered" from="Area2D" to="." method="OnBodyEntered"]
 [connection signal="body_exited" from="Area2D" to="." method="OnBodyExited"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://73ht6qllnpfr"]
+
+[ext_resource type="Script" path="res://Lever.cs" id="1_hecyk"]
+[ext_resource type="Texture2D" uid="uid://dl633rd06a2h3" path="res://alavanca_off.png" id="2_x4onc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7rsi"]
+size = Vector2(233, 215.25)
+
+[node name="Lever" type="Area2D"]
+position = Vector2(2, 0)
+script = ExtResource("1_hecyk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3, -2)
+scale = Vector2(0.429687, 0.421875)
+texture = ExtResource("2_x4onc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -5.375)
+shape = SubResource("RectangleShape2D_w7rsi")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="." to="." method="OnBodyExited"]

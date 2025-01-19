@@ -31,9 +31,8 @@ public partial class KanizsaTri : Node2D
 			GD.Print(Body.GetCollisionMask()-1);
 			GD.Print("TipDown IN: " + RightPlace);
 
-			Body.SetCollisionMask(Body.GetCollisionMask()-5); //Objeto deixa de ser visível
-			Body.SetCollisionLayer(Body.GetCollisionLayer()+4); //Objeto existe na camada 5
-			Body.GetNode<Area2D>("Area2D").SetCollisionMask(Body.GetNode<Area2D>("Area2D").GetCollisionMask()-1); //Area 2D de Objeto para de ver o player
+			Body.SetCollisionMask(Body.GetCollisionMask()-1); //Objeto deixa de ser visível
+			//Body.GetNode<Area2D>("Area2D").SetCollisionMask(Body.GetNode<Area2D>("Area2D").GetCollisionMask()-1); //Area 2D de Objeto para de ver o player
 
 			LastBody = Body; //Guarda qual objeto entrou na área por último
 			LastPoint = "TipDown"; //qual área entrou por último
@@ -49,9 +48,8 @@ public partial class KanizsaTri : Node2D
 			GD.Print(Body.Position);
 			GD.Print("Left IN HERE: " + RightPlace);
 
-			Body.SetCollisionMask(Body.GetCollisionMask()-5);
-			Body.SetCollisionLayer(Body.GetCollisionLayer()+4);
-			Body.GetNode<Area2D>("Area2D").SetCollisionMask(Body.GetNode<Area2D>("Area2D").GetCollisionMask()-1);
+			Body.SetCollisionMask(Body.GetCollisionMask()-1);
+			//Body.GetNode<Area2D>("Area2D").SetCollisionMask(Body.GetNode<Area2D>("Area2D").GetCollisionMask()-1);
 
 			LastBody = Body;
 			LastPoint = "Left";
@@ -61,9 +59,8 @@ public partial class KanizsaTri : Node2D
 		if(Body.Name == "TopRight")
 		{
 			RightPlace++;
-			Body.SetCollisionMask(Body.GetCollisionMask()-5);
-			Body.SetCollisionLayer(Body.GetCollisionLayer()+4);
-			Body.GetNode<Area2D>("Area2D").SetCollisionMask(Body.GetNode<Area2D>("Area2D").GetCollisionMask()-1);
+			Body.SetCollisionMask(Body.GetCollisionMask()-1);
+			//Body.GetNode<Area2D>("Area2D").SetCollisionMask(Body.GetNode<Area2D>("Area2D").GetCollisionMask()-1);
 			
 			LastBody = Body;
 			LastPoint = "Right";
@@ -80,8 +77,8 @@ public partial class KanizsaTri : Node2D
 		var Temp = GetNode<Area2D>(LastPoint);
 		if(Temp.GetCollisionMask() != 0)
 		{
-			Temp.SetCollisionMask(Temp.GetCollisionMask()-8);
-			Temp.SetVisibilityLayer(Temp.GetVisibilityLayer()-8);
+			Temp.SetCollisionMask(0);
+			//Temp.SetVisibilityLayer(Temp.GetVisibilityLayer()-1);
 		}
 		GD.Print(Temp.GetCollisionMask());
 		GD.Print(Temp.Name);

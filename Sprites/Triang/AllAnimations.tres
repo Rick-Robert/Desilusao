@@ -1,5 +1,6 @@
-[gd_resource type="SpriteFrames" load_steps=45 format=3 uid="uid://bowf2tr7681tp"]
+[gd_resource type="SpriteFrames" load_steps=46 format=3 uid="uid://bowf2tr7681tp"]
 
+[ext_resource type="Texture2D" uid="uid://wvldlvnhl1nb" path="res://Sprites/Balls/Black.png" id="1_56ty7"]
 [ext_resource type="Texture2D" uid="uid://wvn6ng07t38b" path="res://Sprites/Triang/Left/Left.png" id="1_qagnf"]
 [ext_resource type="Texture2D" uid="uid://b4ajuvyg3e38o" path="res://Sprites/Triang/Right/Right.png" id="2_fgkyp"]
 [ext_resource type="Texture2D" uid="uid://bmd58347k1gss" path="res://Sprites/Triang/Tip/Tip.png" id="3_s142o"]
@@ -47,6 +48,14 @@
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_56ty7")
+}],
+"loop": false,
+"name": &"IdleBall",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_qagnf")

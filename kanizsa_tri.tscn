@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b071211q0i05a"]
 
 [ext_resource type="Script" path="res://KanizsaTri.cs" id="1_di57a"]
-[ext_resource type="Texture2D" uid="uid://wvldlvnhl1nb" path="res://14.png" id="2_24ri0"]
+[ext_resource type="Texture2D" uid="uid://wvldlvnhl1nb" path="res://Sprites/Balls/Black.png" id="2_q1rop"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrjbu"]
 
@@ -12,39 +12,39 @@ script = ExtResource("1_di57a")
 
 [node name="TipDown" type="Area2D" parent="."]
 modulate = Color(1, 1, 1, 0.0980392)
-position = Vector2(0, 55.42)
+position = Vector2(0, 60)
 collision_layer = 0
-collision_mask = 8
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="TipDown"]
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_24ri0")
+texture = ExtResource("2_q1rop")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TipDown"]
 shape = SubResource("RectangleShape2D_xrjbu")
 
 [node name="Left" type="Area2D" parent="."]
 modulate = Color(1, 1, 1, 0.0980392)
-position = Vector2(-48, -27.72)
+position = Vector2(-59, -42)
 collision_layer = 0
-collision_mask = 8
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Left"]
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_24ri0")
+texture = ExtResource("2_q1rop")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
 shape = SubResource("RectangleShape2D_xrjbu")
 
 [node name="Right" type="Area2D" parent="."]
 modulate = Color(1, 1, 1, 0.0980392)
-position = Vector2(48, -27.52)
+position = Vector2(58, -41)
 collision_layer = 0
-collision_mask = 8
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Right"]
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_24ri0")
+texture = ExtResource("2_q1rop")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
 shape = SubResource("RectangleShape2D_xrjbu")

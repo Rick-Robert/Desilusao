@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ca3bi5ettguo5"]
+
+[ext_resource type="Script" path="res://Bridge.cs" id="1_y05ds"]
+[ext_resource type="Texture2D" uid="uid://ch43lamudam1s" path="res://Sprites/Items/Bridge.png" id="2_lite2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jmgcu"]
+size = Vector2(120, 40)
+
+[node name="Bridge" type="StaticBody2D"]
+script = ExtResource("1_y05ds")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jmgcu")
+
+[node name="BridgeShape" type="Sprite2D" parent="."]
+clip_children = 1
+position = Vector2(-1.90735e-06, -1.90735e-06)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_lite2")
+
+[node name="BridgeSprite" type="Sprite2D" parent="BridgeShape"]
+position = Vector2(-480, 7.62939e-06)
+texture = ExtResource("2_lite2")

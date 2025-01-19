@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class DragNPush : RigidBody2D
+public partial class Triangle : RigidBody2D
 {
 	[Export]
 	public String SetAnimation = "IdleTip";
@@ -11,12 +11,12 @@ public partial class DragNPush : RigidBody2D
 	public delegate void CanPoseEventHandler();
 	public Vector2 Dist = Vector2.Zero, InitialPosition;
 	private Player Player; private bool Draggable; private String DragObject = null; 
-	private CollisionShape2D Collision; private AnimatedSprite2D AnimatedSprite;
+	private CollisionPolygon2D Collision; private AnimatedSprite2D AnimatedSprite;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		Draggable = false;
-		Collision = GetNode<CollisionShape2D>("CollisionShape2D");
+		Collision = GetNode<CollisionPolygon2D>("CollisionPolygon2D");
 		AnimatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 	
 		AnimatedSprite.Animation = SetAnimation;
@@ -30,20 +30,6 @@ public partial class DragNPush : RigidBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _PhysicsProcess(double delta)
 	{
-		if(!Draggable) LinearDamp = 20;
-		if(Draggable) {
-			//GD.Print("Player " + Player.Velocity);
-			//GD.Print("Object " + LinearVelocity+" -\n");
-		}
-		if(GetCollisionMask()%2 == 0)
-		{
-			if(Draggable){
-				Draggable = false;
-				GD.Print("CanPose");
-				LinearVelocity = Vector2.Zero;
-				EmitSignal(SignalName.CanPose);
-			}
-		}
 		Rect2 ViewportRect = GetViewport().GetVisibleRect();
 		if(!ViewportRect.HasPoint(GlobalPosition)){
 			Draggable = false;
@@ -84,20 +70,6 @@ public partial class DragNPush : RigidBody2D
 		if(Body.Name == "Player")
 			Draggable = false;
 		
-	}
-	public void OnAnimationFinished(){
-		GD.Print("Finished");
-		if(Name != "Triangulo")
-			QueueFree();
-	}
-	public void OnKanizsaTriCompleted(){
-		SetCollisionLayer(0);
-		GetNode<Area2D>("Area2D").SetCollisionLayer(0);
-		GetNode<Area2D>("Area2D").SetCollisionMask(0);
-		GD.Print("0 collision");
-		String temp = SetAnimation.Remove(0,4);
-		GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play(temp + "FadeOut");
-		//GD.Print(temp + "FadeOut");
 	}
 	
 }

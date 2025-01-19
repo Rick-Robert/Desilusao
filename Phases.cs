@@ -1,9 +1,11 @@
 using Godot;
 using System;
 
-public partial class TestChamber : Node2D
+public partial class Phases : Node2D
 {
-	public Triangle Triangle = (Triangle)ResourceLoader.Load<PackedScene>("res://Triangle.tscn").Instantiate();
+    
+    public bool Resized = false;
+	public Node2D Triangle;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -22,11 +24,14 @@ public partial class TestChamber : Node2D
 
 	}
 	public void OnKanizsaCompleted(){
+		GD.Print("Completed");
+        Triangle = (Node2D)ResourceLoader.Load<PackedScene>("res://Triangle.tscn").Instantiate();
 		if(Triangle.GetParent() == null){
 			AddChild(Triangle);
-			Triangle.Position = GetNode<Node2D>("Kanizsa_Tri").Position + new Vector2((float)0.0, (float)13.0);
-			Triangle.InitialPosition = Triangle.Position;
-			Triangle.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("TrianguloFadeIn");
+			Triangle.Position = GetNode<Node2D>("Kanizsa_Tri").Position;
+			GD.Print(Triangle.Position);
+			//Triangle.InitialPosition = Triangle.Position;
+			Triangle.GetNode<Triangle>("Triangle").GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("TrianguloFadeIn");
 			Triangle.Rotation = (float)Math.PI;
 
 		}

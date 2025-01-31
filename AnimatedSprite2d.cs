@@ -8,7 +8,7 @@ public partial class AnimatedSprite2d : AnimatedSprite2D
 	public override void _Ready()
 	{
 		
-		
+	/*
 		if(Animation.ToString() == "IdleBall"){
 			var temp = GetParent();
 			while(temp != null && temp.GetType().ToString() != "Phases") temp = temp.GetParent();
@@ -25,6 +25,7 @@ public partial class AnimatedSprite2d : AnimatedSprite2D
 				}
 			}
 		}
+	*/
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,37 +1,121 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvf74nutivei5"]
+[gd_scene load_steps=8 format=3 uid="uid://cvf74nutivei5"]
 
-[ext_resource type="Script" path="res://TriangleMaster.cs" id="1_qxk8o"]
 [ext_resource type="Script" path="res://Triangle.cs" id="1_rxc7u"]
 [ext_resource type="SpriteFrames" uid="uid://bowf2tr7681tp" path="res://Sprites/Triang/AllAnimations.tres" id="2_gnmry"]
 [ext_resource type="Script" path="res://AnimatedSprite2d.cs" id="3_1btie"]
 
-[node name="TriangleMaster" type="Node2D"]
-rotation = 3.14159
-script = ExtResource("1_qxk8o")
+[sub_resource type="Animation" id="Animation_amtfl"]
+resource_name = "FadeIn"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
-[node name="Triangle" type="RigidBody2D" parent="."]
+[sub_resource type="Animation" id="Animation_r5rf6"]
+resource_name = "FadeOut"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_oma5f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_elvg4"]
+_data = {
+"FadeIn": SubResource("Animation_amtfl"),
+"FadeOut": SubResource("Animation_r5rf6"),
+"RESET": SubResource("Animation_oma5f")
+}
+
+[node name="Triangle" type="RigidBody2D"]
+position = Vector2(0, 1)
+rotation = 3.14159
+collision_layer = 9
 gravity_scale = 0.0
+lock_rotation = true
+linear_damp_mode = 1
+linear_damp = 20.0
 script = ExtResource("1_rxc7u")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Triangle"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_gnmry")
 animation = &"IdleTriangulo"
+frame_progress = 1.0
 script = ExtResource("3_1btie")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Triangle"]
-visible = false
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-97, 83, 98, 83, 0, -87)
 
-[node name="Area2D" type="Area2D" parent="Triangle"]
-visible = false
+[node name="Area2D" type="Area2D" parent="."]
 light_mask = 2
 visibility_layer = 2
+scale = Vector2(1.25, 1.25)
 collision_layer = 0
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Triangle/Area2D"]
-position = Vector2(-5.99224e-06, -5.63636)
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(2.43377e-05, -9.6)
 scale = Vector2(1.17, 1.17)
 polygon = PackedVector2Array(-97, 83, 98, 83, 0, -87)
 
-[connection signal="body_entered" from="Triangle/Area2D" to="Triangle" method="OnBodyEntered"]
-[connection signal="body_exited" from="Triangle/Area2D" to="Triangle" method="OnBodyExited"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_elvg4")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="Area2D" to="." method="OnBodyExited"]

@@ -3,6 +3,8 @@ using System;
 
 public partial class KanizsaTri : Node2D
 {
+	[Export]
+	public float ScaleFactor = (float) 0.5;
 	[Signal]
 	public delegate void CompletedEventHandler(); //Ativa quando puzzle completo
 	private RigidBody2D LastBody;
@@ -11,6 +13,12 @@ public partial class KanizsaTri : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+	
+		for(int i = 0; i < GetChildCount(); i++){
+			((Node2D)GetChild(i)).Position *= ScaleFactor;
+			if(((Node2D)GetChild(i)) is not Area2D)
+				((Node2D)GetChild(i)).Scale *= ScaleFactor;
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,6 +27,7 @@ public partial class KanizsaTri : Node2D
 		if(RightPlace == 3){
 			RightPlace = 0;
 			EmitSignal(SignalName.Completed);
+			QueueFree();
 		}
 	}
 
@@ -26,31 +35,16 @@ public partial class KanizsaTri : Node2D
 		if(Body.Name == "TipDown")
 		{
 			RightPlace++;
-
-			GD.Print(Body.Position);
-			GD.Print(Body.GetCollisionMask()-1);
-			GD.Print("TipDown IN: " + RightPlace);
-
 			Body.SetCollisionMask(Body.GetCollisionMask()-1); //Objeto deixa de ser visível
-			//Body.GetNode<Area2D>("Area2D").SetCollisionMask(Body.GetNode<Area2D>("Area2D").GetCollisionMask()-1); //Area 2D de Objeto para de ver o player
-
 			LastBody = Body; //Guarda qual objeto entrou na área por último
 			LastPoint = "TipDown"; //qual área entrou por último
-			GD.Print(LastBody);
 		}
 	}
 	public void OnBodyLeftEntered(RigidBody2D Body){
 		if(Body.Name == "TopLeft")
 		{
 			RightPlace++;
-
-			GD.Print(Body.GetCollisionMask());
-			GD.Print(Body.Position);
-			GD.Print("Left IN HERE: " + RightPlace);
-
 			Body.SetCollisionMask(Body.GetCollisionMask()-1);
-			//Body.GetNode<Area2D>("Area2D").SetCollisionMask(Body.GetNode<Area2D>("Area2D").GetCollisionMask()-1);
-
 			LastBody = Body;
 			LastPoint = "Left";
 		}
@@ -60,27 +54,23 @@ public partial class KanizsaTri : Node2D
 		{
 			RightPlace++;
 			Body.SetCollisionMask(Body.GetCollisionMask()-1);
-			//Body.GetNode<Area2D>("Area2D").SetCollisionMask(Body.GetNode<Area2D>("Area2D").GetCollisionMask()-1);
-			
 			LastBody = Body;
 			LastPoint = "Right";
-
-			GD.Print("Right IN: " + RightPlace);
+			
 		}
 		
 	}
 
 	public void OnDragCanPose(){
+		LastBody.LinearDamp = 20;
+		LastBody.LinearVelocity = Vector2.Zero;
+		GD.Print(LastBody.Name, " Position: ", LastBody.Position);
 		LastBody.Position = LastBody.GetParent().GetNode<Node2D>("Kanizsa_Tri").Position + GetNode<Area2D>(LastPoint).Position;
-		GD.Print(LastBody.Name);
-		//GD.Print(LastBody.Name);
+		GD.Print(LastBody.Name, " After Position: ", LastBody.Position);
 		var Temp = GetNode<Area2D>(LastPoint);
 		if(Temp.GetCollisionMask() != 0)
 		{
 			Temp.SetCollisionMask(0);
-			//Temp.SetVisibilityLayer(Temp.GetVisibilityLayer()-1);
 		}
-		GD.Print(Temp.GetCollisionMask());
-		GD.Print(Temp.Name);
 	}
 }

@@ -13,7 +13,7 @@ public partial class Player : CharacterBody2D
 	
 	private float Friction = 1200;
 	public int Holding = 0;
-	
+	public String DragObject = null;
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 TempVelocity = Vector2.Zero;
@@ -33,6 +33,8 @@ public partial class Player : CharacterBody2D
 						Velocity = dir*ReducedSpeed;
 						TempVelocity = Velocity;
 					}
+				}else{
+					TempVelocity = Vector2.Zero;
 				}
 				
 			}
@@ -61,6 +63,7 @@ public partial class Player : CharacterBody2D
 			{
 				Velocity = Vector2.Zero;
 			}
+			Velocity = Vector2.Zero;
 			
 		}
 	}

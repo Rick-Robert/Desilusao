@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=4 uid="uid://do58ls2g1828j"]
+[gd_scene load_steps=8 format=4 uid="uid://do58ls2g1828j"]
 
 [ext_resource type="PackedScene" uid="uid://dum4n1k0seyer" path="res://Player.tscn" id="1_6t5up"]
 [ext_resource type="Script" path="res://Phases.cs" id="1_thd78"]
 [ext_resource type="TileSet" uid="uid://cgmq4uqbopud5" path="res://Sprites/TileMap/TileMapBase.tres" id="2_o6pv7"]
 [ext_resource type="PackedScene" uid="uid://dgw446lkkku3m" path="res://Object.tscn" id="2_wahgm"]
 [ext_resource type="PackedScene" uid="uid://b071211q0i05a" path="res://kanizsa_tri.tscn" id="3_wsnbr"]
+[ext_resource type="PackedScene" uid="uid://i0ohkf0lv2us" path="res://Button.tscn" id="6_2trgg"]
+[ext_resource type="PackedScene" uid="uid://ca3bi5ettguo5" path="res://bridge.tscn" id="7_xj82t"]
 
 [node name="TestChamber" type="Node2D"]
 script = ExtResource("1_thd78")
@@ -14,31 +16,46 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAPAAAAAAACAAAAAAAPAAgAAAACAAI
 tile_set = ExtResource("2_o6pv7")
 
 [node name="Player" parent="." instance=ExtResource("1_6t5up")]
-position = Vector2(168, 208)
+position = Vector2(992, 504)
 scale = Vector2(0.6, 0.6)
+collision_mask = 5
 Acc = 8000
 FrictionRate = 80000.0
 
 [node name="TipDown" parent="." instance=ExtResource("2_wahgm")]
-position = Vector2(408, 448)
+position = Vector2(408, 408)
+rotation = 1.0472
+scale = Vector2(0.25, 0.25)
 collision_layer = 3
+SetAnimation = "IdleSection"
 
 [node name="Object" parent="." instance=ExtResource("2_wahgm")]
-position = Vector2(672, 656)
-SetAnimation = "IdleBall"
+position = Vector2(496, 776)
+scale = Vector2(0.25, 0.25)
+SetAnimation = "IdleSection"
 
 [node name="TopRight" parent="." instance=ExtResource("2_wahgm")]
-position = Vector2(528, 280)
+position = Vector2(504, 240)
+scale = Vector2(0.25, 0.25)
 collision_layer = 3
-SetAnimation = "IdleLeft"
+SetAnimation = "IdleSection"
+FlipH = true
 
 [node name="TopLeft" parent="." instance=ExtResource("2_wahgm")]
-position = Vector2(288, 272)
+position = Vector2(304, 240)
+scale = Vector2(0.25, 0.25)
 collision_layer = 3
-SetAnimation = "IdleRight"
+SetAnimation = "IdleSection"
 
 [node name="Kanizsa_Tri" parent="." instance=ExtResource("3_wsnbr")]
 position = Vector2(410, 322)
+
+[node name="Button" parent="." instance=ExtResource("6_2trgg")]
+position = Vector2(1304, 584)
+ActivatePath = NodePath("../Bridge")
+
+[node name="Bridge" parent="." instance=ExtResource("7_xj82t")]
+position = Vector2(1096, 672)
 
 [connection signal="CanPose" from="TipDown" to="Kanizsa_Tri" method="OnDragCanPose"]
 [connection signal="CanPose" from="TopRight" to="Kanizsa_Tri" method="OnDragCanPose"]

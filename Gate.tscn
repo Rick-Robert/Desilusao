@@ -1,0 +1,93 @@
+[gd_scene load_steps=15 format=3 uid="uid://cb5e5rtbvyogb"]
+
+[ext_resource type="Script" path="res://Door.cs" id="1_7njn5"]
+[ext_resource type="Texture2D" uid="uid://dooowfv6ncgmx" path="res://Sprites/MetalDoor/MetalDoorClosed.png" id="1_hnhwk"]
+[ext_resource type="Texture2D" uid="uid://dby1u4n3526lc" path="res://Sprites/MetalDoor/MetalDoor1.png" id="2_mgb6d"]
+[ext_resource type="Texture2D" uid="uid://bm8u0het7fq0l" path="res://Sprites/MetalDoor/MetalDoor2.png" id="3_ksu3d"]
+[ext_resource type="Texture2D" uid="uid://bve0ixyf6jk3c" path="res://Sprites/MetalDoor/MetalDoor3.png" id="4_nkrqu"]
+[ext_resource type="Texture2D" uid="uid://3bvyhrxbeeeq" path="res://Sprites/MetalDoor/MetalDoor4.png" id="5_7oyu4"]
+[ext_resource type="Texture2D" uid="uid://osxs52hujq0x" path="res://Sprites/MetalDoor/MetalDoor5.png" id="6_hci4k"]
+[ext_resource type="Texture2D" uid="uid://d32od03re1bsl" path="res://Sprites/MetalDoor/MetalDoor6.png" id="7_5d7x6"]
+[ext_resource type="Texture2D" uid="uid://bpe7yvswyn7ow" path="res://Sprites/MetalDoor/MetalDoor7.png" id="8_g7hht"]
+[ext_resource type="Texture2D" uid="uid://wdmxundy0kh3" path="res://Sprites/MetalDoor/MetalDoor8.png" id="9_qrgil"]
+[ext_resource type="Texture2D" uid="uid://bfokqh1tvux6a" path="res://Sprites/MetalDoor/MetalDoorOpened.png" id="10_hss6d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m55qd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hnhwk")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hnhwk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mgb6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ksu3d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nkrqu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7oyu4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hci4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5d7x6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_g7hht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qrgil")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_hss6d")
+}],
+"loop": false,
+"name": &"MoveOpen",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sbpgn"]
+size = Vector2(139, 73)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nm8qs"]
+size = Vector2(43.5, 122)
+
+[node name="Gate" type="Node2D"]
+scale = Vector2(1.253, 1.277)
+script = ExtResource("1_7njn5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_m55qd")
+animation = &"Idle"
+
+[node name="GateCollision" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GateCollision"]
+position = Vector2(0.5, 25.5)
+shape = SubResource("RectangleShape2D_sbpgn")
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2(-91.5, 0)
+shape = SubResource("RectangleShape2D_nm8qs")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+position = Vector2(92.25, 0)
+shape = SubResource("RectangleShape2D_nm8qs")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="OnAnimationFinished"]

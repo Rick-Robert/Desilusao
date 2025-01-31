@@ -6,6 +6,7 @@ public partial class Phases : Node2D
     
     public bool Resized = false;
 	public Node2D Triangle;
+	private static UtilityBox Tools = new UtilityBox();
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -28,12 +29,10 @@ public partial class Phases : Node2D
         Triangle = (Node2D)ResourceLoader.Load<PackedScene>("res://Triangle.tscn").Instantiate();
 		if(Triangle.GetParent() == null){
 			AddChild(Triangle);
+			Tools.ResizeTree((Node2D)Triangle, (float) GetNode<KanizsaTri>("Kanizsa_Tri").ScaleFactor);
 			Triangle.Position = GetNode<Node2D>("Kanizsa_Tri").Position;
-			GD.Print(Triangle.Position);
+			//GD.Print("NOW: "+Triangle.GetNode<AnimationPlayer>("AnimationPlayer").CurrentAnimation);
 			//Triangle.InitialPosition = Triangle.Position;
-			Triangle.GetNode<Triangle>("Triangle").GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("TrianguloFadeIn");
-			Triangle.Rotation = (float)Math.PI;
-
 		}
 		else{
 			GD.Print("Already has a parent");

@@ -12,7 +12,7 @@ script = ExtResource("1_di57a")
 
 [node name="TipDown" type="Area2D" parent="."]
 modulate = Color(1, 1, 1, 0.0980392)
-position = Vector2(0, 60)
+position = Vector2(0, 84)
 collision_layer = 0
 collision_mask = 2
 
@@ -25,7 +25,7 @@ shape = SubResource("RectangleShape2D_xrjbu")
 
 [node name="Left" type="Area2D" parent="."]
 modulate = Color(1, 1, 1, 0.0980392)
-position = Vector2(-59, -42)
+position = Vector2(-100, -84)
 collision_layer = 0
 collision_mask = 2
 
@@ -38,7 +38,7 @@ shape = SubResource("RectangleShape2D_xrjbu")
 
 [node name="Right" type="Area2D" parent="."]
 modulate = Color(1, 1, 1, 0.0980392)
-position = Vector2(58, -41)
+position = Vector2(100, -84)
 collision_layer = 0
 collision_mask = 2
 
@@ -48,6 +48,14 @@ texture = ExtResource("2_q1rop")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
 shape = SubResource("RectangleShape2D_xrjbu")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+rotation = -3.14159
+polygon = PackedVector2Array(-97, 83, 98, 83, 0, -87)
 
 [connection signal="body_entered" from="TipDown" to="." method="OnBodyTipDownEntered"]
 [connection signal="body_entered" from="Left" to="." method="OnBodyLeftEntered"]

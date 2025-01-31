@@ -14,8 +14,9 @@ public partial class NextPhase : Node2D
 	public override void _Process(double delta)
 	{
 	}
-	public void OnPortalBodyEntered(Node2D _Body){
-		CallDeferred(nameof(ChangeSceneToNext));
+	public void OnPortalBodyEntered(Node2D Body){
+		if(Body.Name == "Player")
+			CallDeferred(nameof(ChangeSceneToNext));
 	}
 	private void ChangeSceneToNext()
     {

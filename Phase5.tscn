@@ -1,0 +1,128 @@
+[gd_scene load_steps=14 format=4 uid="uid://4t7oou2mdng0"]
+
+[ext_resource type="Script" path="res://Phases.cs" id="1_fmp07"]
+[ext_resource type="TileSet" uid="uid://cgmq4uqbopud5" path="res://Sprites/TileMap/TileMapBase.tres" id="2_vuwn8"]
+[ext_resource type="PackedScene" uid="uid://cb5e5rtbvyogb" path="res://Gate.tscn" id="5_b3fve"]
+[ext_resource type="PackedScene" uid="uid://ca3bi5ettguo5" path="res://bridge.tscn" id="6_5kkuk"]
+[ext_resource type="Texture2D" uid="uid://iffbnrc6cltl" path="res://Sprites/Items/Pool3.png" id="6_afap0"]
+[ext_resource type="PackedScene" uid="uid://dgw446lkkku3m" path="res://Object.tscn" id="7_sw5ux"]
+[ext_resource type="PackedScene" uid="uid://dum4n1k0seyer" path="res://Player.tscn" id="8_721ew"]
+[ext_resource type="PackedScene" uid="uid://b071211q0i05a" path="res://kanizsa_tri.tscn" id="8_wy8ud"]
+[ext_resource type="Texture2D" uid="uid://de5wu5x7sf6r0" path="res://Sprites/Balls/SectionCircle.png" id="9_2oi44"]
+[ext_resource type="PackedScene" uid="uid://i0ohkf0lv2us" path="res://Button.tscn" id="9_jap2n"]
+[ext_resource type="PackedScene" uid="uid://c40y66wtrgwlr" path="res://NextPhase.tscn" id="9_oeacy"]
+[ext_resource type="PackedScene" uid="uid://73ht6qllnpfr" path="res://Lever.tscn" id="11_ne7q1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5reij"]
+size = Vector2(399, 333.514)
+
+[node name="Phase2" type="Node2D"]
+script = ExtResource("1_fmp07")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAIAAAAPAAgAAAACAAIAAAAPAAAAAAACAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAMAAAAFAAAAAAABAAAAAAAGAAAAAAABAAAAAAAHAAAAAAABAAAAAAAIAAAAAAABAAMAAAAJAAAAAAABAAAAAAAKAAAAAAABAAAAAAALAAAAAAABAAAAAAAMAAAAAAABAAAAAAANAAAAAAABAAAAAAAOAAAAAAABAAAAAAAPAAEAAAACAAEAAAAPAAIAAAACAAEAAAAPAAMAAAACAAEAAAAPAAQAAAACAAEAAAAPAAUAAAACAAEAAAAPAAYAAAACAAEAAAAPAAcAAAACAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAEAAAAAAAMAAAAAAAEAAAAAAAQAAAAAAAEAAAAAAAUAAAAAAAEAAAAAAAYAAAAAAAEAAAAAAAcAAAAAAAEAAAABAAgAAAABAAIAAAACAAgAAAABAAIAAAADAAgAAAABAAIAAAAEAAgAAAABAAMAAAAFAAgAAAABAAIAAAAGAAgAAAABAAIAAAAHAAgAAAABAAIAAAAIAAgAAAABAAIAAAAJAAgAAAABAAIAAAAKAAgAAAABAAIAAAALAAgAAAABAAIAAAAMAAgAAAABAAIAAAANAAgAAAABAAIAAAAOAAgAAAABAAIAAAABAAEAAAABAAEAAAABAAIAAAABAAEAAAABAAMAAAABAAEAAAABAAQAAAABAAEAAAABAAUAAAABAAEAAAABAAYAAAABAAEAAAABAAcAAAABAAEAAAACAAEAAAABAAEAAAACAAIAAAABAAEAAAACAAMAAAABAAEAAAACAAQAAAABAAEAAAACAAUAAAABAAEAAAACAAYAAAABAAEAAAACAAcAAAABAAEAAAADAAEAAAABAAEAAAADAAIAAAABAAEAAAADAAMAAAABAAEAAAADAAQAAAABAAEAAAADAAUAAAABAAEAAAADAAYAAAABAAEAAAADAAcAAAABAAEAAAAEAAEAAAABAAMAAAAEAAIAAAABAAMAAAAEAAMAAAAAAAMAAQAEAAQAAAABAAEAAAAEAAUAAAABAAEAAAAEAAYAAAABAAEAAAAEAAcAAAAAAAMAAAAFAAEAAAABAAEAAAAFAAIAAAABAAEAAAAFAAMAAAABAAEAAAAFAAQAAAABAAEAAAAFAAUAAAABAAEAAAAFAAYAAAABAAEAAAAFAAcAAAABAAEAAAAGAAEAAAABAAEAAAAGAAIAAAABAAEAAAAGAAMAAAABAAEAAAAGAAQAAAABAAEAAAAGAAUAAAABAAEAAAAGAAYAAAABAAEAAAAGAAcAAAABAAEAAAAHAAEAAAABAAEAAAAHAAIAAAABAAEAAAAHAAMAAAABAAEAAAAHAAQAAAABAAEAAAAHAAUAAAABAAEAAAAHAAYAAAABAAEAAAAHAAcAAAABAAEAAAAIAAEAAAABAAMAAAAIAAIAAAABAAMAAAAIAAMAAAABAAMAAAAIAAQAAAABAAMAAAAIAAUAAAAAAAMAAQAIAAYAAAABAAEAAAAIAAcAAAABAAEAAAAJAAEAAAABAAEAAAAJAAIAAAABAAEAAAAJAAMAAAABAAEAAAAJAAQAAAABAAEAAAAJAAUAAAABAAEAAAAJAAYAAAABAAEAAAAJAAcAAAABAAEAAAAKAAEAAAABAAEAAAAKAAIAAAABAAEAAAAKAAMAAAABAAEAAAAKAAQAAAABAAEAAAAKAAUAAAABAAEAAAAKAAYAAAABAAEAAAAKAAcAAAABAAEAAAALAAEAAAABAAEAAAALAAIAAAABAAEAAAALAAMAAAABAAEAAAALAAQAAAABAAEAAAALAAUAAAABAAEAAAALAAYAAAABAAEAAAALAAcAAAABAAEAAAAMAAEAAAABAAEAAAAMAAIAAAABAAEAAAAMAAMAAAABAAEAAAAMAAQAAAABAAEAAAAMAAUAAAABAAEAAAAMAAYAAAABAAEAAAAMAAcAAAABAAEAAAANAAEAAAABAAEAAAANAAIAAAABAAEAAAANAAMAAAABAAEAAAANAAQAAAABAAEAAAANAAUAAAABAAEAAAANAAYAAAABAAEAAAANAAcAAAABAAEAAAAOAAEAAAABAAEAAAAOAAIAAAABAAEAAAAOAAMAAAABAAEAAAAOAAQAAAABAAEAAAAOAAUAAAABAAEAAAAOAAYAAAABAAEAAAAOAAcAAAABAAEAAAA=")
+tile_set = ExtResource("2_vuwn8")
+
+[node name="NextPhase" parent="." instance=ExtResource("9_oeacy")]
+position = Vector2(652, 126)
+scale = Vector2(1.5, 1.5)
+NextPhasePath = "res://Phases/Phase1.tscn"
+
+[node name="Gate" parent="." instance=ExtResource("5_b3fve")]
+position = Vector2(650, 320)
+scale = Vector2(1.31666, 1.30883)
+
+[node name="Button" parent="." instance=ExtResource("9_jap2n")]
+position = Vector2(650, 749)
+scale = Vector2(0.8, 0.8)
+collision_layer = 0
+collision_mask = 8
+ActivatePath = NodePath("../Gate")
+
+[node name="Gap" type="Sprite2D" parent="."]
+position = Vector2(1242, 442)
+rotation = 1.5708
+scale = Vector2(0.779, 0.792)
+texture = ExtResource("6_afap0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Gap"]
+
+[node name="CollisionShape2" type="CollisionShape2D" parent="Gap/StaticBody2D"]
+position = Vector2(0.5, -265.242)
+shape = SubResource("RectangleShape2D_5reij")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Gap"]
+position = Vector2(0, 534.926)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gap/StaticBody2D2"]
+position = Vector2(0.5, -273.252)
+shape = SubResource("RectangleShape2D_5reij")
+
+[node name="Bridge" parent="." instance=ExtResource("6_5kkuk")]
+position = Vector2(1242, 442)
+rotation = -1.5708
+scale = Vector2(2.58139, 3.63942)
+
+[node name="TipDown" parent="." instance=ExtResource("7_sw5ux")]
+position = Vector2(1464, 182)
+rotation = 1.0472
+scale = Vector2(0.25, 0.25)
+collision_layer = 3
+SetAnimation = "IdleSection"
+
+[node name="TopRight" parent="." instance=ExtResource("7_sw5ux")]
+position = Vector2(1029, 145)
+scale = Vector2(0.25, 0.25)
+collision_layer = 3
+SetAnimation = "IdleSection"
+FlipH = true
+
+[node name="TopLeft" parent="." instance=ExtResource("7_sw5ux")]
+position = Vector2(1221, 217)
+scale = Vector2(0.25, 0.25)
+collision_layer = 3
+SetAnimation = "IdleSection"
+
+[node name="Kanizsa_Tri" parent="." instance=ExtResource("8_wy8ud")]
+light_mask = 4
+visibility_layer = 4
+position = Vector2(209, 251)
+ScaleFactor = 0.4
+
+[node name="Sprite2D" type="Sprite2D" parent="Kanizsa_Tri"]
+self_modulate = Color(1, 1, 1, 0.196078)
+position = Vector2(97, -83)
+rotation = -1.0472
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_2oi44")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Kanizsa_Tri"]
+self_modulate = Color(1, 1, 1, 0.196078)
+position = Vector2(-95, -83)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_2oi44")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Kanizsa_Tri"]
+self_modulate = Color(1, 1, 1, 0.196078)
+position = Vector2(0, 87)
+rotation = 1.0472
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_2oi44")
+
+[node name="Lever" parent="." instance=ExtResource("11_ne7q1")]
+position = Vector2(1461, 745)
+scale = Vector2(0.5, 0.5)
+ActivatePath = NodePath("../Bridge")
+
+[node name="Player" parent="." instance=ExtResource("8_721ew")]
+position = Vector2(160, 768)
+collision_mask = 5
+
+[connection signal="CanPose" from="TipDown" to="Kanizsa_Tri" method="OnDragCanPose"]
+[connection signal="CanPose" from="TopRight" to="Kanizsa_Tri" method="OnDragCanPose"]
+[connection signal="CanPose" from="TopLeft" to="Kanizsa_Tri" method="OnDragCanPose"]
+[connection signal="Completed" from="Kanizsa_Tri" to="." method="OnKanizsaCompleted"]
+[connection signal="Completed" from="Kanizsa_Tri" to="TipDown" method="OnKanizsaTriCompleted"]
+[connection signal="Completed" from="Kanizsa_Tri" to="TopRight" method="OnKanizsaTriCompleted"]
+[connection signal="Completed" from="Kanizsa_Tri" to="TopLeft" method="OnKanizsaTriCompleted"]

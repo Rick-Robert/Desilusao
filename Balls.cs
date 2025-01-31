@@ -15,7 +15,6 @@ public partial class Balls : Sprite2D
 	{
 		AngularVel *= Direction;
 		AngularVel = AngularVel*(float)Mathf.Pi/180;
-		GD.Print(GetParent().GetType().ToString());
 		if(GetParent().GetType().ToString() == "Godot.Sprite2D" || GetParent().GetType().ToString() == "Balls")
 			Parent = (Sprite2D)GetParent();
 		Angle = Position.Angle();

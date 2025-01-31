@@ -3,9 +3,8 @@ using System;
 
 public partial class Button : Area2D
 {
-	[Export] public NodePath DoorPath;
-
-	private bool isOn = false;
+	[Export] public NodePath ActivatePath;
+	public int ObjOnArea = 0;
 
 	public override void _Ready()
 	{
@@ -16,49 +15,49 @@ public partial class Button : Area2D
 
 	private void OnBodyEntered(Node2D body)
 	{
-		if (!isOn)
-		{
+		ObjOnArea++;
+		if(ObjOnArea == 1)
 			Activate();
-		}
 	}
 
 	private void OnBodyExited(Node2D body)
 	{
-		if (isOn)
-		{
+		ObjOnArea--;
+		if(ObjOnArea <= 0)
 			Deactivate();
-		}
 	}
 
 	private void Activate()
 	{
-		isOn = true;
-
 		// alterar aparência do botão
 		Sprite2D buttonSprite = GetNode<Sprite2D>("Sprite2D");
-		buttonSprite.Modulate = new Color(0, 1, 0);
-
+		GD.Print(((AnimatedTexture)buttonSprite.Texture).GetCurrentFrame());
+		((AnimatedTexture)buttonSprite.Texture).SetCurrentFrame(1);
 		// ativar porta
-		Node door = GetNode(DoorPath);
-		if (door != null)
+		Node Activatable = GetNode(ActivatePath);
+		if (Activatable != null && Activatable is Bridge)
 		{
-			((Door)door).Toggle();
+			((Bridge)Activatable).Activate();
+		}
+		if(Activatable != null && Activatable is Door){
+			((Door)Activatable).Toggle();
 		}
 	}
 
 	private void Deactivate()
 	{
-		isOn = false;
-
 		// restaurar aparencia do botão
 		Sprite2D buttonSprite = GetNode<Sprite2D>("Sprite2D");
-		buttonSprite.Modulate = new Color(1, 1, 1);
-
+		GD.Print(((AnimatedTexture)buttonSprite.Texture).GetCurrentFrame());
+		((AnimatedTexture)buttonSprite.Texture).SetCurrentFrame(0);
 		// desativar porta
-		Node door = GetNode(DoorPath);
-		if (door != null)
+		Node Activatable = GetNode(ActivatePath);
+		if (Activatable != null && Activatable is Bridge)
 		{
-			((Door)door).Toggle();
+			((Bridge)Activatable).Activate();
+		}
+		if(Activatable != null && Activatable is Door){
+			((Door)Activatable).Toggle();
 		}
 	}
 }

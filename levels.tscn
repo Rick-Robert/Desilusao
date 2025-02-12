@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds124qqkgaguk"]
+
+[ext_resource type="FontFile" uid="uid://dpop0e5q6wwoe" path="res://battlenet.ttf" id="1_78m6e"]
+
+[node name="ColorRect" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.427451, 0.466667, 0.411765, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CenterContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_78m6e")
+theme_override_font_sizes/font_size = 50
+text = "opções
+"
+horizontal_alignment = 1

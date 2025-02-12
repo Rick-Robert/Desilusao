@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://br7rbgm0p6emy"]
+[gd_scene load_steps=17 format=4 uid="uid://br7rbgm0p6emy"]
 
 [ext_resource type="Script" path="res://Phases.cs" id="1_qvip1"]
 [ext_resource type="TileSet" uid="uid://cgmq4uqbopud5" path="res://Sprites/TileMap/TileMapBase.tres" id="2_ggwgh"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cb5e5rtbvyogb" path="res://Gate.tscn" id="10_ef5me"]
 [ext_resource type="PackedScene" uid="uid://73ht6qllnpfr" path="res://Lever.tscn" id="11_0imve"]
 [ext_resource type="PackedScene" uid="uid://dgw446lkkku3m" path="res://Object.tscn" id="12_ej3hr"]
+[ext_resource type="FontFile" uid="uid://dxw66xunemsuj" path="res://Fonts/Palestine/Palestine Border.ttf" id="13_3c251"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6g7ib"]
 texture = ExtResource("3_f55pq")
@@ -200,3 +201,15 @@ scale = Vector2(1.6, 1.6)
 [node name="Object2" parent="." instance=ExtResource("12_ej3hr")]
 position = Vector2(1379, 612)
 scale = Vector2(2, 2)
+
+[node name="Mova" type="Label" parent="."]
+offset_left = 265.0
+offset_top = 767.0
+offset_right = 1062.0
+offset_bottom = 932.0
+theme_override_colors/font_color = Color(0.223529, 0.443137, 0.627451, 1)
+theme_override_fonts/font = ExtResource("13_3c251")
+theme_override_font_sizes/font_size = 50
+text = "Força aos grandes, fraqueza aos diminutos"
+horizontal_alignment = 1
+vertical_alignment = 1

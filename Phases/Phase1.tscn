@@ -33,6 +33,20 @@ ASD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="BEM" type="Label" parent="."]
+offset_left = 966.0
+offset_top = 10.0
+offset_right = 1333.0
+offset_bottom = 175.0
+theme_override_colors/font_color = Color(0.223529, 0.443137, 0.627451, 1)
+theme_override_fonts/font = ExtResource("3_0xvvl")
+theme_override_font_sizes/font_size = 40
+text = "BEM:
+BotAo 
+esquerdo do mouse"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Saia" type="Label" parent="."]
 offset_left = 1397.0
 offset_top = 133.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://do58ls2g1828j"]
+[gd_scene load_steps=9 format=4 uid="uid://do58ls2g1828j"]
 
 [ext_resource type="PackedScene" uid="uid://dum4n1k0seyer" path="res://Player.tscn" id="1_6t5up"]
 [ext_resource type="Script" path="res://Phases.cs" id="1_thd78"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b071211q0i05a" path="res://kanizsa_tri.tscn" id="3_wsnbr"]
 [ext_resource type="PackedScene" uid="uid://i0ohkf0lv2us" path="res://Button.tscn" id="6_2trgg"]
 [ext_resource type="PackedScene" uid="uid://ca3bi5ettguo5" path="res://bridge.tscn" id="7_xj82t"]
+[ext_resource type="PackedScene" uid="uid://bm2m0oc7ru2lt" path="res://Ponzo.tscn" id="8_uhrli"]
 
 [node name="TestChamber" type="Node2D"]
 script = ExtResource("1_thd78")
@@ -16,7 +17,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAPAAAAAAACAAAAAAAPAAgAAAACAAI
 tile_set = ExtResource("2_o6pv7")
 
 [node name="Player" parent="." instance=ExtResource("1_6t5up")]
-position = Vector2(992, 504)
+position = Vector2(976, 472)
 scale = Vector2(0.6, 0.6)
 collision_mask = 5
 Acc = 8000
@@ -56,6 +57,20 @@ ActivatePath = NodePath("../Bridge")
 
 [node name="Bridge" parent="." instance=ExtResource("7_xj82t")]
 position = Vector2(1096, 672)
+
+[node name="Ponzo" parent="." instance=ExtResource("8_uhrli")]
+position = Vector2(976, 336)
+scale = Vector2(0.2, 0.2)
+
+[node name="Ponzo2" parent="." instance=ExtResource("8_uhrli")]
+position = Vector2(976, 256)
+rotation = 3.14159
+scale = Vector2(0.15, 0.15)
+
+[node name="Ponzo3" parent="." instance=ExtResource("8_uhrli")]
+position = Vector2(976, 200)
+rotation = 1.5708
+scale = Vector2(0.1, 0.1)
 
 [connection signal="CanPose" from="TipDown" to="Kanizsa_Tri" method="OnDragCanPose"]
 [connection signal="CanPose" from="TopRight" to="Kanizsa_Tri" method="OnDragCanPose"]

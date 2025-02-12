@@ -18,4 +18,4 @@ position = Vector2(160, 768)
 [node name="NextPhase" parent="." instance=ExtResource("9_ux7eg")]
 position = Vector2(1352, 160)
 scale = Vector2(1.5, 1.5)
-NextPhasePath = "res://Phase3.tscn"
+NextPhasePath = "res://Phases/Phase1.tscn"

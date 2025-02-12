@@ -65,6 +65,7 @@ size = Vector2(139, 73)
 size = Vector2(43.5, 122)
 
 [node name="Gate" type="Node2D"]
+z_index = 2
 scale = Vector2(1.253, 1.277)
 script = ExtResource("1_7njn5")
 

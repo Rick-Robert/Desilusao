@@ -51,9 +51,9 @@ scale = Vector2(1.5, 1.5)
 NextPhasePath = "res://Phase4.tscn"
 
 [node name="Object" parent="." instance=ExtResource("8_piqmk")]
-position = Vector2(360, 744)
+position = Vector2(408, 720)
 scale = Vector2(0.4, 0.4)
 collision_layer = 9
 
 [node name="Player" parent="." instance=ExtResource("6_6stim")]
-position = Vector2(160, 768)
+position = Vector2(208, 752)

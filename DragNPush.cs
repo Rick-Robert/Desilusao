@@ -65,7 +65,10 @@ public partial class DragNPush : RigidBody2D
 			}
 			if(Player.DragObject == Name && Draggable){
 				LinearDamp = 0;
-				LinearVelocity = Player.Velocity;
+				if (Player.Scale.X/AnimatedSprite.Scale.X > (float)0.3){
+					GD.Print("Ratio: ", Player.Scale.X/AnimatedSprite.Scale.X);
+					LinearVelocity = Player.Velocity*Mathf.Min(Player.Scale.X/AnimatedSprite.Scale.X,1);
+				}
 			}
 			if(Input.IsActionJustReleased("Drag")){
 				if(Player != null)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c40y66wtrgwlr"]
+[gd_scene load_steps=8 format=3 uid="uid://c40y66wtrgwlr"]
 
 [ext_resource type="Script" path="res://NextPhase.cs" id="1_l3vju"]
 [ext_resource type="Texture2D" uid="uid://b0p7xg2e4xea1" path="res://Sprites/Balls/DarkPurple301c5c.png" id="1_tfea4"]
 [ext_resource type="Texture2D" uid="uid://dligby0tmg3r5" path="res://Sprites/Balls/Purple7651ca.png" id="2_urw4i"]
 [ext_resource type="Script" path="res://Balls.cs" id="3_mtbmx"]
 [ext_resource type="Texture2D" uid="uid://didwqr1riwchx" path="res://Sprites/Balls/ShadowPurple7651ca.png" id="4_ucvs0"]
+[ext_resource type="PackedScene" uid="uid://cqpw0vihb0vs5" path="res://SpiralAnimation.tscn" id="6_koe4s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lwuwt"]
 radius = 64.4981
@@ -149,4 +150,8 @@ script = ExtResource("3_mtbmx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
 shape = SubResource("CircleShape2D_lwuwt")
 
-[connection signal="body_entered" from="Portal" to="." method="OnPortalBodyEntered"]
+[node name="Control" parent="." instance=ExtResource("6_koe4s")]
+rotation = 0.0
+
+[connection signal="body_entered" from="Portal" to="Control" method="OnBodyEntered"]
+[connection signal="FinishedAnimation" from="Control" to="." method="OnAnimationFinished"]

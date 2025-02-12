@@ -16,7 +16,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5reij"]
 size = Vector2(399, 333.514)
 
-[node name="Phase2" type="Node2D"]
+[node name="Phase5" type="Node2D"]
 script = ExtResource("1_fmp07")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -26,11 +26,7 @@ tile_set = ExtResource("2_vuwn8")
 [node name="NextPhase" parent="." instance=ExtResource("9_oeacy")]
 position = Vector2(652, 126)
 scale = Vector2(1.5, 1.5)
-NextPhasePath = "res://Phases/Phase1.tscn"
-
-[node name="Gate" parent="." instance=ExtResource("5_b3fve")]
-position = Vector2(650, 320)
-scale = Vector2(1.31666, 1.30883)
+NextPhasePath = "res://Phase6.tscn"
 
 [node name="Button" parent="." instance=ExtResource("9_jap2n")]
 position = Vector2(650, 749)
@@ -64,21 +60,21 @@ rotation = -1.5708
 scale = Vector2(2.58139, 3.63942)
 
 [node name="TipDown" parent="." instance=ExtResource("7_sw5ux")]
-position = Vector2(1464, 182)
+position = Vector2(1030, 148)
 rotation = 1.0472
 scale = Vector2(0.25, 0.25)
 collision_layer = 3
 SetAnimation = "IdleSection"
 
 [node name="TopRight" parent="." instance=ExtResource("7_sw5ux")]
-position = Vector2(1029, 145)
+position = Vector2(1182, 185)
 scale = Vector2(0.25, 0.25)
 collision_layer = 3
 SetAnimation = "IdleSection"
 FlipH = true
 
 [node name="TopLeft" parent="." instance=ExtResource("7_sw5ux")]
-position = Vector2(1221, 217)
+position = Vector2(1391, 168)
 scale = Vector2(0.25, 0.25)
 collision_layer = 3
 SetAnimation = "IdleSection"
@@ -118,6 +114,10 @@ ActivatePath = NodePath("../Bridge")
 [node name="Player" parent="." instance=ExtResource("8_721ew")]
 position = Vector2(160, 768)
 collision_mask = 5
+
+[node name="Gate" parent="." instance=ExtResource("5_b3fve")]
+position = Vector2(650, 320)
+scale = Vector2(1.31666, 1.30883)
 
 [connection signal="CanPose" from="TipDown" to="Kanizsa_Tri" method="OnDragCanPose"]
 [connection signal="CanPose" from="TopRight" to="Kanizsa_Tri" method="OnDragCanPose"]

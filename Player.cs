@@ -17,6 +17,7 @@ public partial class Player : CharacterBody2D
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 TempVelocity = Vector2.Zero;
+		var dir = Input.GetVector("Left","Right","Up", "Down");
 		if(Holding != 0) MaxSpeed = ReducedSpeed; else MaxSpeed = 400;
 		for (int i = 0; i < GetSlideCollisionCount(); i++)
 		{
@@ -24,12 +25,13 @@ public partial class Player : CharacterBody2D
 			if (collision.GetCollider() is RigidBody2D)
 			{
 				
-				var dir = Input.GetVector("Left","Right","Up", "Down");
+				
 				if(dir.Length()>0){ //if any movement button is pressed
 					var rigidBody = (RigidBody2D)collision.GetCollider();
 					if(rigidBody.GetCollisionMask() != 0){ //if object is not in CanPose mode
 						float angle = Math.Min((float)Math.Abs((-collision.GetNormal()).AngleTo(dir)),(float)Math.PI/2);
-						rigidBody.LinearVelocity = -collision.GetNormal()*ReducedSpeed*(float)Math.Cos(angle);
+						if (Scale.X/rigidBody.Scale.X > (float)0.3)
+							rigidBody.LinearVelocity = -collision.GetNormal()*ReducedSpeed*(float)Math.Cos(angle)*Math.Min(Scale.X/rigidBody.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Scale.X, 1);
 						Velocity = dir*ReducedSpeed;
 						TempVelocity = Velocity;
 					}
@@ -41,7 +43,7 @@ public partial class Player : CharacterBody2D
 		}
 		CharacterMove(delta);
 		MoveAndSlide();
-		if(TempVelocity.Length() != 0) Velocity = TempVelocity;
+		if(TempVelocity.Length() != 0 && dir.Length() != 0) Velocity = TempVelocity;
 		
 	}
 

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk87f73ms5ah3"]
+
+[ext_resource type="PackedScene" uid="uid://c40y66wtrgwlr" path="res://NextPhase.tscn" id="1_x5ovc"]
+[ext_resource type="PackedScene" uid="uid://dum4n1k0seyer" path="res://Player.tscn" id="2_3gb2q"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_3gb2q")]
+position = Vector2(360, 232)
+
+[node name="NextPhase" parent="." instance=ExtResource("1_x5ovc")]
+position = Vector2(624, 224)
+NextPhasePath = "res://Phases/Phase1.tscn"

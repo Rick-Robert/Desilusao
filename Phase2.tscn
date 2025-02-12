@@ -71,13 +71,13 @@ shape = SubResource("RectangleShape2D_ctdq6")
 position = Vector2(800, 472)
 scale = Vector2(3.33862, 3.54274)
 
-[node name="Player" parent="." instance=ExtResource("3_b5jep")]
-position = Vector2(160, 768)
-
 [node name="NextPhase" parent="." instance=ExtResource("6_aaun5")]
 position = Vector2(1352, 160)
 scale = Vector2(1.5, 1.5)
 NextPhasePath = "res://Phase3.tscn"
+
+[node name="Player" parent="." instance=ExtResource("3_b5jep")]
+position = Vector2(214, 738)
 
 [connection signal="body_entered" from="Lever/Area2D2" to="Lever/Aperte" method="OnAreaEntered"]
 [connection signal="body_exited" from="Lever/Area2D2" to="Lever/Aperte" method="OnAreaExited"]

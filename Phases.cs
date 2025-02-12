@@ -10,6 +10,21 @@ public partial class Phases : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		PackedScene packedScene = (PackedScene)ResourceLoader.Load("res://SpiralAnimation.tscn");
+        if (packedScene != null)
+        {
+            // Instance the scene
+            Node newNode = packedScene.Instantiate();
+
+            // Add the new node as a child of the current scene
+            AddChild(newNode);
+			((ControlSplashPhase)newNode).OnBodyEntered(null);
+			
+        }
+        else
+        {
+            GD.Print("Failed to load scene!");
+        }
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

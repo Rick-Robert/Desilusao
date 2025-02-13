@@ -8,7 +8,7 @@ public partial class ControlSplashPhase : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		GlobalPosition = new Vector2(800,450);
+		GlobalPosition = new Vector2(960,540);
 		if(((Node2D)GetParent()).Scale.X  != 1){
 			Scale = Vector2.One*(float)(1/((Node2D)GetParent()).Scale.X);
 		}

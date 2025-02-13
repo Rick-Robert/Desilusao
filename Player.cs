@@ -4,8 +4,8 @@ using System;
 public partial class Player : CharacterBody2D
 {
 	[Export]
-	public int MaxSpeed = 400;
-	public int ReducedSpeed = 300;
+	public int MaxSpeed = 500;
+	public int ReducedSpeed = 350;
 	[Export]
 	public int Acc = 2200;
 	[Export]
@@ -18,7 +18,7 @@ public partial class Player : CharacterBody2D
 	{
 		Vector2 TempVelocity = Vector2.Zero;
 		var dir = Input.GetVector("Left","Right","Up", "Down");
-		if(Holding != 0) MaxSpeed = ReducedSpeed; else MaxSpeed = 400;
+		if(Holding != 0) MaxSpeed = ReducedSpeed; else MaxSpeed = 500;
 		for (int i = 0; i < GetSlideCollisionCount(); i++)
 		{
 			var collision = GetSlideCollision(i);

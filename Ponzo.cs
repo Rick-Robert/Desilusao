@@ -15,7 +15,7 @@ public partial class Ponzo : Area2D
 		PlayerBody = GetParent().GetNode<Player>("Player");
         GD.Print("Player scale: ", PlayerBody.GetNode<Node2D>("Eye").Scale.X, " texture: ", PlayerBody.GetNode<Node2D>("Eye").GetNode<Sprite2D>("Outline").Texture.GetWidth());
         MaxPlayerScale = (PonzoSprite.GetWidth()*Scale.X)/(PlayerBody.GetNode<Node2D>("Eye").GetNode<Sprite2D>("Outline").Texture.GetWidth()*PlayerBody.GetNode<Node2D>("Eye").Scale.X);
-        MaxPlayerScale *= (float)0.9;
+        MaxPlayerScale *= (float)0.85;
         MinPlayerScale = (float)0.1*(float)MaxPlayerScale;
         GD.Print("MaxScale: ", MaxPlayerScale, " MinScale: ", MinPlayerScale);
 	}
@@ -27,7 +27,7 @@ public partial class Ponzo : Area2D
             InitialPlayerScale = body.Scale.Y;
             InitialYPos = body.GlobalPosition.Y;
             GD.Print("corpo entrou na area");
-            //GD.Print("INitial: ", InitialYPos);
+            GD.Print("INitial: ", InitialYPos);
         }
 	
 	
@@ -53,7 +53,7 @@ public partial class Ponzo : Area2D
             //Area.Scale *= (float)0.96657; 0.1
             var RelativePos = PlayerBody.GlobalPosition.Y - InitialYPos;
             GD.Print("Relative: ",RelativePos);
-            PlayerBody.Scale = Vector2.One*(InitialPlayerScale+(float)RelativePos*MaxPlayerScale/(PonzoSprite.GetHeight()*Scale.Y));
+            PlayerBody.Scale = Vector2.One*(InitialPlayerScale+(float)RelativePos*MaxPlayerScale/(PonzoSprite.GetHeight()*Scale.Y*(float)1.2));
             PlayerBody.Scale = PlayerBody.Scale.Min(Vector2.One*MaxPlayerScale);
             PlayerBody.Scale = PlayerBody.Scale.Max(Vector2.One*MinPlayerScale);
             if(PlayerBody.Scale == Vector2.One*MaxPlayerScale ||PlayerBody.Scale == Vector2.One*MinPlayerScale){

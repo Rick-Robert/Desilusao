@@ -133,6 +133,7 @@ sources/0 = SubResource("TileSetAtlasSource_6g7ib")
 size = Vector2(399, 351.923)
 
 [node name="Phase7" type="Node2D"]
+scale = Vector2(1.2, 1.2)
 script = ExtResource("1_qvip1")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -196,11 +197,11 @@ ActivatePath = NodePath("../Cross/Bridge")
 
 [node name="Object" parent="." instance=ExtResource("12_ej3hr")]
 position = Vector2(333, 183)
-scale = Vector2(1.6, 1.6)
+scale = Vector2(1.92, 1.92)
 
 [node name="Object2" parent="." instance=ExtResource("12_ej3hr")]
 position = Vector2(1379, 612)
-scale = Vector2(2, 2)
+scale = Vector2(2.4, 2.4)
 
 [node name="Mova" type="Label" parent="."]
 offset_left = 265.0

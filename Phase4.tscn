@@ -15,6 +15,7 @@
 size = Vector2(399, 365.195)
 
 [node name="Phase4" type="Node2D"]
+scale = Vector2(1.2, 1.2)
 script = ExtResource("1_s4bgt")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -56,7 +57,7 @@ position = Vector2(800, 457)
 scale = Vector2(3.33862, 3.54274)
 
 [node name="NextPhase" parent="." instance=ExtResource("6_372e0")]
-position = Vector2(1480, 160)
+position = Vector2(1445, 172.5)
 scale = Vector2(1.5, 1.5)
 NextPhasePath = "res://Phase5.tscn"
 

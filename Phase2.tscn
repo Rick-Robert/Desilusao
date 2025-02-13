@@ -17,6 +17,7 @@ size = Vector2(233.846, 207.692)
 size = Vector2(399, 334.958)
 
 [node name="Phase2" type="Node2D"]
+scale = Vector2(1.2, 1.2)
 script = ExtResource("1_hrbiy")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

@@ -17,6 +17,7 @@
 size = Vector2(399, 333.514)
 
 [node name="Phase5" type="Node2D"]
+scale = Vector2(1.2, 1.2)
 script = ExtResource("1_fmp07")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -62,20 +63,20 @@ scale = Vector2(2.58139, 3.63942)
 [node name="TipDown" parent="." instance=ExtResource("7_sw5ux")]
 position = Vector2(1030, 148)
 rotation = 1.0472
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.3, 0.3)
 collision_layer = 3
 SetAnimation = "IdleSection"
 
 [node name="TopRight" parent="." instance=ExtResource("7_sw5ux")]
 position = Vector2(1182, 185)
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.3, 0.3)
 collision_layer = 3
 SetAnimation = "IdleSection"
 FlipH = true
 
 [node name="TopLeft" parent="." instance=ExtResource("7_sw5ux")]
 position = Vector2(1391, 168)
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.3, 0.3)
 collision_layer = 3
 SetAnimation = "IdleSection"
 

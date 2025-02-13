@@ -13,6 +13,7 @@
 radius = 173.684
 
 [node name="Phase1" type="Node2D"]
+scale = Vector2(1.2, 1.2)
 script = ExtResource("1_6wwth")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -71,17 +72,17 @@ scale = Vector2(0.75, 0.75)
 
 [node name="Ball1" parent="Objects" instance=ExtResource("2_fnbpj")]
 position = Vector2(107, 504)
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.84, 0.84)
 Scaling = 0.7
 
 [node name="Ball2" parent="Objects" instance=ExtResource("2_fnbpj")]
 position = Vector2(399, 318)
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.9, 0.9)
 Scaling = 0.5
 
 [node name="Ball3" parent="Objects" instance=ExtResource("2_fnbpj")]
 position = Vector2(650, 362)
-scale = Vector2(0.38, 0.38)
+scale = Vector2(0.48, 0.48)
 Scaling = 1.15
 
 [node name="Aperte" type="Label" parent="Objects/Ball3"]
@@ -107,7 +108,7 @@ shape = SubResource("CircleShape2D_sabfi")
 
 [node name="Ball4" parent="Objects" instance=ExtResource("2_fnbpj")]
 position = Vector2(1152, 464)
-scale = Vector2(1.14, 1.14)
+scale = Vector2(1.4, 1.4)
 Scaling = 3.75
 
 [connection signal="body_entered" from="Objects/Ball3/Area2D2" to="Objects/Ball3/Aperte" method="OnAreaEntered"]

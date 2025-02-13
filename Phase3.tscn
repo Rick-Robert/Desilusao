@@ -13,6 +13,7 @@
 size = Vector2(399, 334.958)
 
 [node name="Phase3" type="Node2D"]
+scale = Vector2(1.2, 1.2)
 script = ExtResource("1_k4lx4")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -52,7 +53,7 @@ NextPhasePath = "res://Phase4.tscn"
 
 [node name="Object" parent="." instance=ExtResource("8_piqmk")]
 position = Vector2(408, 720)
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.48, 0.48)
 collision_layer = 9
 
 [node name="Player" parent="." instance=ExtResource("6_6stim")]
